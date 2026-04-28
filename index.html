@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyCast</title>
+
+    <!-- Font Inter Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- MapLibre GL JS -->
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="logo-section">
+          <img
+            class="logo-icon"
+            src="assets/images/logo.png"
+            alt="logo"
+          />
+          <span class="logo-text">SkyCast</span>
+        </div>
+
+        <div class="search-container">
+          <i data-lucide="search" class="search-icon-fixed"></i>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search city..."
+            autocomplete="off"
+          />
+          <div class="search-results" data-search-results></div>
+        </div>
+        <div class="header-actions">
+          <button data-current-location class="btn-current-location">
+            <i data-lucide="map-pin"></i>
+            <span>Current Location</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="dashboard-grid" data-view-content="dashboard">
+        <div class="left-panel">
+          <!-- Hero Weather Card -->
+          <section class="weather-hero">
+            <div class="weather-info">
+              <div class="city">---</div>
+              <h1>---</h1>
+              <div class="condition">---</div>
+            </div>
+            <div class="weather-illustration">---</div>
+          </section>
+
+          <!-- Today Highlights -->
+          <section class="today-highlight">
+            <h2 class="section-title">Today's Highlights</h2>
+            <div class="highlight-grid">
+              <div class="highlight-card air-quality">
+                <div class="card-header">
+                  <span>Air Quality Index</span>
+                  <span class="aqi-level"></span>
+                </div>
+                <div class="air-quality-list">
+                  <!-- PM2.5, O3, SO2, NO2 -->
+                </div>
+              </div>
+              <div class="highlight-card sunrise-sunset">
+                <div class="card-header">
+                  <span>Sunrise & Sunset</span>
+                </div>
+                <div class="sun-card-content">
+                  <!-- Sunrise, Sunset info -->
+                </div>
+              </div>
+              <div class="highlight-card uv-index">
+                <div class="card-header">
+                  <span>UV Index</span>
+                </div>
+                <div class="uv-content">
+                  <!-- UV Index info -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Today At (Hourly) -->
+          <section class="today-at">
+            <h2 class="section-title">Today At</h2>
+            <div class="hourly-list">
+              <!-- Hourly forecast cards -->
+            </div>
+          </section>
+
+          <!-- 5-Day Forecast -->
+          <section class="forecast-section">
+            <h2 class="section-title">5-Day Forecast</h2>
+            <div class="forecast-grid">
+              <!-- Forecast cards -->
+            </div>
+          </section>
+        </div>
+
+        <div class="right-panel">
+          <div class="metrics-grid">
+            <!-- Metrics cards -->
+          </div>
+
+          <div class="radar-card">
+            <div class="label">Interactive Radar</div>
+            <div id="map" class="radar-placeholder">
+              <!-- Map will be initialized here -->
+            </div>
+            <button data-expand-map class="btn-expand-map">
+              Expand Map
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Full Screen Map Modal -->
+    <div id="map-modal">
+      <div class="map-modal-header">
+        <h2 class="map-modal-title">Interactive Radar</h2>
+        <button id="close-map-modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div id="full-map"></div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="assets/js/app.js"></script>
+    <script>
+      // Initialize OpenFreeMap with MapLibre
+      window.map = new maplibregl.Map({
+        style: "https://tiles.openfreemap.org/styles/liberty",
+        center: [106.8456, -6.2088], // Jakarta Coordinates
+        zoom: 10,
+        container: "map",
+      });
+      window.map.addControl(new maplibregl.NavigationControl());
+
+      // Initialize Full Map
+      window.fullMap = new maplibregl.Map({
+        style: "https://tiles.openfreemap.org/styles/liberty",
+        center: [106.8456, -6.2088],
+        zoom: 10,
+        container: "full-map",
+      });
+      window.fullMap.addControl(new maplibregl.NavigationControl());
+    </script>
+  </body>
+</html>
