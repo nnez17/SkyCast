@@ -2,7 +2,7 @@
 
 A modern, responsive, and sleek weather dashboard built with HTML, CSS (Glassmorphism), and Vanilla JavaScript. SkyCast provides real-time weather updates, air quality indexing, an interactive MapLibre radar map, and a 5-day forecast.
 
-![SkyCast UI Screenshot](assets/images/screenshot.png)
+![SkyCast UI Screenshot](assets/images/image.png)
 
 ## Features 🚀
 
@@ -36,4 +36,5 @@ A modern, responsive, and sleek weather dashboard built with HTML, CSS (Glassmor
 - The mapping engine logic and UI interactivity can be extended inside `assets/js/app.js`.
 
 ---
-*Created as part of a modern UI modernization and weather mapping project.*
+
+_Created as part of a modern UI modernization and weather mapping project._
